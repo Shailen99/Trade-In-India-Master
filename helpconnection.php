@@ -14,11 +14,12 @@ else {
 }
 
 
-$Name = $_POST["name"];
-$Email = $_POST["email"];
-$Comment = $_POST["text"];
+$Name = $_POST["Name"];
+$Email = $_POST["Email"];
+$Phone = $_POST["PhoneNum"];
+$Comment = $_POST["comment"];
 
-$sql = "INSERT INTO details (Name, Email, Comment) VALUES ('{$Name}', '{$Email}', '{$Comment}')";
+$sql = "INSERT INTO HelpInformation (Name, Email, PhoneNum, Comment) VALUES ('{$Name}', '{$Email}', '{$Phone}', '{$Comment}')";
 
 
 $conn->close();

@@ -4,7 +4,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
-body {margin:0;}
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
 .navbar {
   overflow: hidden;
   background-color: #333;
@@ -76,6 +87,61 @@ margin-right: 1000px;
   padding: 16px;
   margin-bottom: 30px;
 }
+
+.container {
+	max-width:400px;
+	width:100%;
+	margin:0 auto;
+	position:relative;
+}
+#contact {
+	background:#F9F9F9;
+	padding:25px;
+	margin:50px 0;
+}#contact h3 {
+	color: #F96;
+	display: block;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+#contact h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+}
+fieldset {
+	border: medium none !important;
+	margin: 0 0 10px;
+	min-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+#contact input[name="FIRST"],
+ #contact input[name="LAST"],
+ #contact input[name="EMAIL"],
+ #contact input[name="PHONENUM"],
+ #contact input[name="DEVICE"],
+ #contact input[name="AGE"],
+ #contact input[name="SELLPRICE"],
+ #contact textarea,
+ #contact button[type="submit"]
+ { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+ #contact input[name="FIRST"],
+  #contact input[name="LAST"],
+  #contact input[name="EMAIL"],
+	#contact input[name="PHONENUM"],
+  #contact input[name="DEVICE"],
+  #contact input[name="AGE"],
+  #contact input[name="SELLPRICE"],
+  #contact textarea,
+  #contact button[type="submit"]{	width:100%;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
 </style>
 </head>
 <body>
@@ -90,40 +156,62 @@ margin-right: 1000px;
       <a href="buysamsung.html">Samsung</a>
       <a href="buymicrosoft.html">Microsoft</a>
     </div>
-  </div>
-  <div class = "dropdown">
-  <button class="dropbtn">Sell</button>
-  <div class="dropdown-content">
+    </div>
+    <div class = "dropdown">
+    <button class="dropbtn">Sell</button>
+    <div class="dropdown-content">
     <a href="sellapple.html">Apple</a>
     <a href="sellsamsung.html">Samsung</a>
     <a href="sellmicrosoft.html">Microsoft</a>
+    </div>
+    </div>
+    <a href="help.html" style="float:right">Help</a>
+    <a href="#" style="float:right">Forum</a>
+    <a href="admin.php" style="float:right">Admin</a>
   </div>
-  </div>
-  <a href="help.html" style="float:right">Help</a>
-  <a href="#" style="float:right">Forum</a>
-  <a href="admin.php" style="float:right">Admin</a>
 
-</div>
-
+<div class = "container">
   <form id="contact" action="sellconnection.php" method="POST">
     <h3>Contact Us to Sell your Device</h3>
+    <h4> We will contact you within three to ten business days</h4>
+    <fieldset>
+      <label for="FIRST">First Name</label>
       <input placeholder="First Name" name="FIRST">
-      <br>
+    </fieldset>
+    <fieldset>
+      <label for="LAST">Last Name</label>
       <input placeholder="Last Name" name="LAST">
-      <br>
+    </fieldset>
+    <fieldset>
+      <label for="EMAIL">Email Address</label>
       <input placeholder="Email Address" name="EMAIL">
-      <br>
-      <input placeholder="Desired Device" name="DEVICE">
-      <br>
+    </fieldset>
+		<fieldset>
+			<label for="PHONENUM">Phone Number</label>
+			<input placeholder="Phone Number (+91)" name="PHONENUM">
+		</fieldset>
+    <fieldset>
+      <label for="DEVICE">What Device</label>
+      <input placeholder="Desired Device to Sell" name="DEVICE">
+    </fieldset>
+    <fieldset>
+      <label for="AGE">Age of Device (Years)</label>
       <input placeholder="Device Age" name="AGE" tabindex="5">
-      <br>
+    </fieldset>
+    <fieldset>
+      <label for="ISSUE">Device Issues</label>
       <textarea placeholder="Device Issues" name = "ISSUE"></textarea>
-      <br>
+    </fieldset>
+    <fieldset>
+      <label for="SELLPRICE">Desired Selling Prince (INR)</label>
       <input placeholder="Desired Selling Price" name="SELLPRICE">
-      <br>
+    </fieldset>
+    <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-  </form>
+    </fieldset>
 
+  </form>
+</div>
 
 </body>
 

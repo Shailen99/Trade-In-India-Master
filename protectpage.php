@@ -4,6 +4,106 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {margin:0;}
+
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #333;
@@ -102,22 +202,58 @@ margin-right: 1000px;
   <a href="#" style="float:right">Forum</a>
   <a href="admin.php" style="float:right">Admin</a>
 
-</div><?php
+
+
+
+</div>
+<center>
+  <h2> Information of Interested Sellers</h2>
+<tr>
+<td>
+<?php
 $connection = mysqli_connect("localhost","root","","sell");
-$sql = "SELECT FirstName, LastName, Email, Device, DeviceAge, DeviceIssues, DesiredPrice FROM details";
+$sql = "SELECT FirstName, LastName, Email,PHONENUM, Device,  DeviceAge, DeviceIssues, DesiredPrice FROM details";
 
 $results = mysqli_query($connection,$sql);
 
 if(mysqli_num_rows($results)>0){
+  echo "<table><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone Number</th><th>Device</th><th>Age</th><th>Issues</th><th>Price Wanted</th></tr>";
 
 while ($row = mysqli_fetch_array($results))
 {
-  echo $row[0]." ".$row[1]." ".$row[2]." ".$row[3]." ".$row[4]." ".$row[5]." ".$row[6];
-  echo "<br>";
+    echo "<tr><td>" .$row[0]."</td><td> ".$row[1]."</td><td> ".$row[2]." </td><td>".$row[3]."</td><td> ".$row[4]."</td><td> ".$row[5]." </td><td>".$row[6]." </td><td>".$row[7]."</td></tr>";
+
 }
 }
+echo "</table>";
 
 ?>
+</td>
+</tr>
+<h2> Comments and Concerns</h2>
+
+<?php
+$connection = mysqli_connect("localhost","root","","Help");
+$sql = "SELECT Name, Email, PhoneNum,Comment FROM HelpInformation";
+
+$results = mysqli_query($connection,$sql);
+
+if(mysqli_num_rows($results)>0){
+  echo "<table><tr><th>Name</th><th>Email</th><th>Phone Number</th><th>Comment</th></tr>";
+
+while ($row = mysqli_fetch_array($results))
+{
+    echo "<tr><td>" .$row[0]."</td><td> ".$row[1]."</td><td> ".$row[2]." </td><td>".$row[3]."</td></tr>";
+}
+}
+echo "</table>";
+
+?>
+
+
+
+</center>
+
 </body>
 
 </html>
