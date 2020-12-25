@@ -1,10 +1,60 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="style.css" rel="stylesheet" type="text/css">
+
 <style>
-body {margin:0;}
+.login {
+  	width: 400px;
+  	background-color: #ffffff;
+  	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  	margin: 100px auto;
+}
+.login h1 {
+  	text-align: center;
+  	color: #5b6574;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0;
+  	border-bottom: 1px solid #dee0e4;
+}
+.login form {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	padding-top: 20px;
+}
+.login form input[type="password"], .login form input[type="text"] {
+  	width: 310px;
+  	height: 50px;
+  	border: 1px solid #dee0e4;
+  	margin-bottom: 20px;
+  	padding: 0 15px;
+}
+.login form input[type="submit"] {
+  	width: 100%;
+  	padding: 15px;
+ 	margin-top: 20px;
+  	background-color: #3274d6;
+  	border: 0;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: #ffffff;
+  	transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover {
+	background-color: #2868c7;
+  	transition: background-color 0.2s;
+}
+
+body {
+  margin:0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .navbar {
   overflow: hidden;
   background-color: #333;
@@ -104,36 +154,25 @@ margin-right: 1000px;
   <a href="admin.php" style="float:right">Admin</a>
 
 </div>
-</body>
 
 <center><img src="style/companylogo.png" alt="Trade In India Logo">
-
 <h2> Administrator Area </h2>
-<form>
-<input type="button" value="Enter Protected Area" onClick="passWord()">
-</form>
-</center>
+<div class="login">
+  <h1>Login</h1>
 
-<script>
+  <form action="authenticate.php" method="post">
+    <label for="username">
+      <i class="fas fa-user"></i>
+    </label>
+    <input type="text" name="username" placeholder="Username" id="username" required>
+    <label for="password">
+      <i class="fas fa-lock"></i>
+    </label>
+    <input type="password" name="password" placeholder="Password" id="password" required>
+    <input type="submit" value="Login">
+  </form>
+</div>
 
-function passWord() {
-var testV = 1;
-var pass1 = prompt('Please Enter Your Password',' ');
-while (testV < 3) {
-if (!pass1)
-history.go(-1);
-if (pass1.toLowerCase() == "letmein") {
-alert('Password Correct');
-window.open('protectpage.php');
-break;
-}
-testV+=1;
-var pass1 = prompt('Access Denied - Password Incorrect, Please Try Again.','Password');
-}
-if (pass1.toLowerCase()!="password" & testV ==3)
-history.go(-1);
-return " ";
-}
-</script>
 
+</body>
 </html>
